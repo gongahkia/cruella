@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>$title$</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .reveal section pre code {
+      background: #222b3a;
+      color: #fff;
+      border-radius: 4px;
+      padding: 0.6em 1em;
+    }
+    .reveal section {
+      font-size: 1.25em;
+    }
+    .reveal h1, .reveal h2, .reveal h3 {
+      color: #4f8cff;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      $body$
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: true,
+      transition: 'slide',
+      backgroundTransition: 'fade',
+      width: 1200,
+      height: 700,
+      margin: 0.1,
+      minScale: 0.2,
+      maxScale: 2.0
+    });
+  </script>
+</body>
+</html>
