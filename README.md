@@ -20,6 +20,7 @@ The project is fully POSIX shell compatible and designed for extensibility and r
 
 * *Script*: [Bash](https://www.gnu.org/software/bash/)
 * *Dependencies*: [Pandoc](https://pandoc.org/), [Reveal.js](https://revealjs.com/),  [Python](https://www.python.org/), [rsync](https://linux.die.net/man/1/rsync)
+* *CI/CD*: [Github Actions](https://github.com/features/actions)
 
 ## Usage
 
