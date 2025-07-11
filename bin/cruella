@@ -1,0 +1,57 @@
+#!/bin/sh
+
+set -e
+
+BIN_DIR="$(cd "$(dirname "$0")" && pwd)"
+PATH="$BIN_DIR:$PATH"
+
+show_help() {
+  cat <<EOF
+cruella - FOOLS-STACK CLI
+
+Usage:
+  cruella build [html|pdf|slides|all]
+  cruella serve [DIR] [PORT]
+  cruella deploy
+  cruella clean
+  cruella help
+
+Commands:
+  build html      Build HTML site from Markdown
+  build pdf       Build PDFs from Markdown
+  build slides    Build Slides from Markdown
+  build all       Build all outputs
+  serve [DIR]     Serve directory locally (default: ./public)
+  deploy          Deploy site to remote (requires DEPLOY_DEST)
+  clean           Remove generated files
+  help            Show this help
+EOF
+}
+
+build() {
+  case "$1" in
+    html)   "$BIN_DIR/build_html.sh" ;;
+    pdf)    "$BIN_DIR/build_pdf.sh" ;;
+    slides) "$BIN_DIR/build_slides.sh" ;;
+    all)
+      "$BIN_DIR/build_html.sh"
+      "$BIN_DIR/build_pdf.sh"
+      "$BIN_DIR/build_slides.sh"
+      ;;
+    *) echo "Unknown build target: $1"; exit 1 ;;
+  esac
+}
+
+clean() {
+  rm -rf ./public/* ./pdfs/* ./slides/*
+  echo "Cleaned generated files."
+}
+
+case "$1" in
+  build)   shift; build "$@" ;;
+  serve)   shift; "$BIN_DIR/serve.sh" "$@" ;;
+  deploy)  "$BIN_DIR/deploy.sh" ;;
+  clean)   clean ;;
+  help|"") show_help ;;
+  *) echo "Unknown command: $1"; show_help; exit 1 ;;
+esac
