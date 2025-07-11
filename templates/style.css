@@ -1,0 +1,155 @@
+:root {
+  --sidebar-width: 260px;
+  --primary-bg: #f9fafb;
+  --sidebar-bg: #222b3a;
+  --sidebar-color: #f2f2f2;
+  --accent: #4f8cff;
+  --content-bg: #fff;
+  --border-radius: 8px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.03);
+  --font-main: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-main);
+  background: var(--primary-bg);
+  color: #222;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: var(--sidebar-width);
+  background: var(--sidebar-bg);
+  color: var(--sidebar-color);
+  padding: 2rem 1rem 1rem 1rem;
+  box-shadow: var(--shadow);
+  min-height: 100vh;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar h2 {
+  font-size: 1.2rem;
+  margin-top: 0;
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar a {
+  color: var(--sidebar-color);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.sidebar a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.sidebar-meta {
+  font-size: 0.95em;
+  color: #b3b3b3;
+  margin-top: 2rem;
+}
+
+.content {
+  flex: 1;
+  background: var(--content-bg);
+  margin: 2rem;
+  padding: 2rem 2.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  min-width: 0;
+  max-width: 900px;
+}
+
+article {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #1a2233;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+p, ul, ol, pre, blockquote {
+  margin-bottom: 1.2em;
+}
+
+pre, code {
+  background: #f4f4f4;
+  border-radius: 4px;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  font-size: 1em;
+}
+
+pre {
+  padding: 1em;
+  overflow-x: auto;
+}
+
+code {
+  padding: 0.2em 0.4em;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5em;
+}
+
+th, td {
+  border: 1px solid #e3e3e3;
+  padding: 0.6em 0.8em;
+  text-align: left;
+}
+
+th {
+  background: #f1f5fb;
+  font-weight: 600;
+}
+
+blockquote {
+  border-left: 4px solid var(--accent);
+  background: #f3f7ff;
+  padding: 0.8em 1.2em;
+  margin: 1.5em 0;
+  color: #444;
+}
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    min-height: unset;
+    position: static;
+    box-shadow: none;
+    padding: 1rem;
+  }
+  .content {
+    margin: 1rem;
+    padding: 1rem;
+  }
+}
