@@ -1,0 +1,19 @@
+name: Full Stack CI/CD
+
+on:
+  workflow_dispatch:  
+
+jobs:
+  backend-ci:
+    uses: ./.github/workflows/backend-ci.yml
+
+  frontend-ci:
+    uses: ./.github/workflows/frontend-ci.yml
+
+  build-site:
+    needs: [backend-ci, frontend-ci]
+    uses: ./.github/workflows/site-build.yml
+
+  deploy-site:
+    needs: build-site
+    uses: ./.github/workflows/deploy-site.yml
