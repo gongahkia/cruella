@@ -28,5 +28,5 @@ $ git clone https://github.com/gongahkia/cruella && cd cruella
 The name `Cruella` is in reference to [Cruella de Vil](https://disney.fandom.com/wiki/Cruella_De_Vil), the main antagonist of the [Disney](https://disney.fandom.com/wiki/Walt_Disney_Productions) classic [One Hundred and One Dalmatians](https://disney.fandom.com/wiki/One_Hundred_and_One_Dalmatians).
 
 <div align="center">
-    <img src="./asset/logo/cruella.png" width="50%">
+    <img src="./asset/logo/cruella.png" width="40%">
 </div>
