@@ -2,19 +2,9 @@
 
 # `Cruella`
 
-...
+[POSIX](https://en.wikipedia.org/wiki/POSIX)-compliant Static Site, Slides and PDF generator and publisher written in [Bash]().
 
-**Cruella** is a powerful static publishing and conversion toolkit for Markdown-based content. It enables you to:
-
-- Convert Markdown files to responsive HTML, PDF, and interactive Slides.
-- Use custom templates for consistent, beautiful output.
-- Serve your generated site locally for preview.
-- Deploy your site to any remote server.
-- Automate and customize your publishing workflow.
-
-The project is fully POSIX shell compatible and designed for extensibility and reproducibility.
-
-...
+`Cruella` works on any [Markdown](https://www.markdownguide.org/) folder.
 
 ## Stack
 
@@ -251,3 +241,13 @@ The name `Cruella` is in reference to [Cruella de Vil](https://disney.fandom.com
 <div align="center">
     <img src="./asset/logo/cruella.png" width="35%">
 </div>
+
+## Credits
+
+`Cruella` is greatly inspired by the following projects.
+
+* [davidmerfield/Blot](https://github.com/davidmerfield/Blot)
+* [jekyll/jekyll](https://github.com/jekyll/jekyll)
+* [11ty/eleventy](https://github.com/11ty/eleventy/)
+* [gohugoio/hugo](https://github.com/gohugoio/hugo)
+* [getzola/zola](https://github.com/getzola/zola)
