@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Advanced Features</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/white.css" id="theme" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/plugin/highlight/monokai.css" />
+  <style>
+    .reveal section pre code { background:#1d2430;color:#fff;border-radius:6px;padding:.7em 1em;font-size:.85em; }
+    .reveal h1,.reveal h2,.reveal h3 { color: var(--accent,#4f8cff); }
+    .slide-footer { position:fixed;bottom:4px;right:10px;font-size:.6em;opacity:.55; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides"><section id="advanced-features"
+class="slide level1">
+<h1>Advanced Features</h1>
+<p>Explore the powerful capabilities of Cruella beyond basic Markdown
+rendering.</p>
+<h2 id="front-matter-metadata">Front Matter Metadata</h2>
+<p>Every Markdown file can include YAML front matter:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> My Document</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> John Doe</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> 2025-11-08</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tags</span><span class="kw">:</span><span class="at"> tutorial, documentation</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<p>Currently supported fields: - <code>title</code> – Page/document
+title (fallback: filename)</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<p>TOCs are automatically generated: - <strong>HTML pages</strong>: 3
+levels deep - <strong>Slides</strong>: 2 levels deep</p>
+<p>Example structure:</p>
+<h3 id="level-1-heading">Level 1 Heading</h3>
+<h4 id="level-2-heading">Level 2 Heading</h4>
+<h5 id="level-3-heading">Level 3 Heading</h5>
+<h2 id="search-functionality">Search Functionality</h2>
+<p>The search bar in the sidebar performs live substring matching
+across: - Document titles - Full content text</p>
+<h3 id="how-it-works">How It Works</h3>
+<ol type="1">
+<li>Plugin generates <code>index.json</code> from all Markdown
+files</li>
+<li>Client-side JavaScript loads the index</li>
+<li>User input triggers instant filtering</li>
+<li>Results link directly to pages</li>
+</ol>
+<h3 id="future-enhancements">Future Enhancements</h3>
+<ul>
+<li>Fuzzy matching with Lunr.js</li>
+<li>Search highlighting</li>
+<li>Keyboard shortcuts (Cmd+K)</li>
+<li>Advanced filters (tags, dates)</li>
+</ul>
+<h2 id="dark-mode">Dark Mode</h2>
+<p>Toggle between light and dark themes: - Button in top-right corner -
+Preference saved in localStorage - Respects system preference on first
+visit - Smooth transitions</p>
+<h3 id="color-variables">Color Variables</h3>
+<p>Customize themes in <code>style.css</code>:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode css"><code class="sourceCode css"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">:root</span> {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="va">--accent</span><span class="ch">:</span> <span class="cn">#4f8cff</span><span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">--sidebar-bg</span><span class="ch">:</span> <span class="cn">#222b3a</span><span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="in">:root</span><span class="fu">.dark</span> {</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="va">--accent</span><span class="ch">:</span> <span class="cn">#4f8cff</span><span class="op">;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="va">--sidebar-bg</span><span class="ch">:</span> <span class="cn">#121a24</span><span class="op">;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h2 id="presentation-slides">Presentation Slides</h2>
+<p>Enhanced with Reveal.js plugins:</p>
+<h3 id="syntax-highlighting">Syntax Highlighting</h3>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code blocks are automatically highlighted</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fibonacci(n):</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">&lt;=</span> <span class="dv">1</span>:</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> n</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fibonacci(n<span class="op">-</span><span class="dv">1</span>) <span class="op">+</span> fibonacci(n<span class="op">-</span><span class="dv">2</span>)</span></code></pre></div>
+<h3 id="speaker-notes">Speaker Notes</h3>
+<p>Add notes below slide content:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Slide Title</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>Content visible to audience.</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>::: notes</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>These notes are only visible in speaker view.</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>Press &#39;S&#39; to open speaker view.</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div>
+<h3 id="keyboard-shortcuts">Keyboard Shortcuts</h3>
+<ul>
+<li><strong>Arrow keys</strong>: Navigate slides</li>
+<li><strong>S</strong>: Speaker view</li>
+<li><strong>F</strong>: Fullscreen</li>
+<li><strong>Esc</strong>: Overview mode</li>
+<li><strong>Ctrl+Shift+F</strong>: Search slides</li>
+</ul>
+<h2 id="plugin-system">Plugin System</h2>
+<h3 id="built-in-plugins">Built-in Plugins</h3>
+<h4 id="search-index-builder">1. Search Index Builder</h4>
+<ul>
+<li><strong>File</strong>:
+<code>plugins/build_search_index.sh</code></li>
+<li><strong>Purpose</strong>: Generates <code>index.json</code> for
+search</li>
+<li><strong>Dependencies</strong>: <code>jq</code></li>
+</ul>
+<h4 id="build-timestamp">2. Build Timestamp</h4>
+<ul>
+<li><strong>File</strong>:
+<code>plugins/example_postprocess.sh</code></li>
+<li><strong>Purpose</strong>: Adds invisible timestamp to HTML</li>
+<li><strong>Dependencies</strong>: None</li>
+</ul>
+<h3 id="creating-custom-plugins">Creating Custom Plugins</h3>
+<p>Example: Extract tags from front matter</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/sh</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># plugins/extract_tags.sh</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-e</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="va">MARKDOWN_DIR</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${MARKDOWN_DIR</span><span class="op">:-</span>./content<span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="va">HTML_DIR</span><span class="op">=</span><span class="st">&quot;</span><span class="va">${HTML_DIR</span><span class="op">:-</span>./public<span class="va">}</span><span class="st">&quot;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> md <span class="kw">in</span> <span class="st">&quot;</span><span class="va">$MARKDOWN_DIR</span><span class="st">&quot;</span>/<span class="pp">*</span>.md<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="bu">[</span> <span class="ot">-e</span> <span class="st">&quot;</span><span class="va">$md</span><span class="st">&quot;</span> <span class="bu">]</span> <span class="kw">||</span> <span class="cf">continue</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="va">tags</span><span class="op">=</span><span class="va">$(</span><span class="fu">awk</span> <span class="st">&#39;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="st">    BEGIN{inmeta=0}</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="st">    /^---$/{ if(inmeta==0){inmeta=1;next}else{exit} }</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="st">    inmeta==1 &amp;&amp; $0 ~ &quot;^tags:&quot; {</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="st">      sub(&quot;^tags:[ ]*&quot;, &quot;&quot;); print; exit</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="st">    }&#39;</span> <span class="st">&quot;</span><span class="va">$md</span><span class="st">&quot;</span><span class="va">)</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="bu">[</span> <span class="ot">-n</span> <span class="st">&quot;</span><span class="va">$tags</span><span class="st">&quot;</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">&quot;</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">&quot;</span><span class="va">$md</span><span class="st">&quot;</span><span class="va">)</span><span class="st">: </span><span class="va">$tags</span><span class="st">&quot;</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">fi</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div>
+<h3 id="plugin-best-practices">Plugin Best Practices</h3>
+<ol type="1">
+<li><strong>Exit gracefully</strong> if dependencies missing</li>
+<li><strong>Use environment variables</strong> for paths</li>
+<li><strong>Print clear log messages</strong></li>
+<li><strong>Be idempotent</strong> (safe to run multiple times)</li>
+<li><strong>Handle errors</strong> without breaking the build</li>
+</ol>
+<h2 id="watch-mode">Watch Mode</h2>
+<p>Live rebuild on file changes using <code>entr</code>:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./bin/cruella</span> watch</span></code></pre></div>
+<h3 id="how-it-works-1">How It Works</h3>
+<ol type="1">
+<li>Monitors <code>content/*.md</code> files</li>
+<li>Triggers <code>build_all.sh</code> on change</li>
+<li>Logs rebuild timestamp</li>
+<li>Continues watching</li>
+</ol>
+<h3 id="tips">Tips</h3>
+<ul>
+<li>Use with <code>serve.sh</code> for live preview</li>
+<li>Add <code>content/**/*.md</code> to watch subdirectories (future
+enhancement)</li>
+<li>Restart watch if you add new files</li>
+</ul>
+<h2 id="accessibility-features">Accessibility Features</h2>
+<h3 id="keyboard-navigation">Keyboard Navigation</h3>
+<ul>
+<li><strong>Skip link</strong>: Jump to main content (Tab from page
+load)</li>
+<li><strong>Focus indicators</strong>: High-contrast outlines</li>
+<li><strong>Tab order</strong>: Logical sequence</li>
+</ul>
+<h3 id="semantic-html">Semantic HTML</h3>
+<ul>
+<li><code>&lt;main&gt;</code> for content area</li>
+<li><code>&lt;aside&gt;</code> for sidebar</li>
+<li><code>&lt;nav&gt;</code> for navigation</li>
+<li><code>&lt;article&gt;</code> for document body</li>
+</ul>
+<h3 id="aria-labels">ARIA Labels</h3>
+<ul>
+<li>Search input: <code>aria-label="Search content"</code></li>
+<li>Search results: <code>aria-live="polite"</code></li>
+<li>Theme toggle: <code>aria-label="Toggle dark mode"</code></li>
+</ul>
+<h3 id="screen-reader-support">Screen Reader Support</h3>
+<ul>
+<li>Proper heading hierarchy (h1 → h2 → h3)</li>
+<li>Alt text for images (author responsibility)</li>
+<li>Table headers with <code>&lt;th&gt;</code></li>
+</ul>
+<h2 id="build-optimization">Build Optimization</h2>
+<h3 id="reducing-build-time">Reducing Build Time</h3>
+<ol type="1">
+<li><strong>Incremental builds</strong> (roadmap)</li>
+<li><strong>Parallel processing</strong> (future)</li>
+<li><strong>Skip unchanged files</strong> (future)</li>
+<li><strong>Cache PDF builds</strong> (future)</li>
+</ol>
+<h3 id="output-size">Output Size</h3>
+<ul>
+<li>HTML: ~15KB per page (minified CSS)</li>
+<li>PDF: ~80KB per document</li>
+<li>Slides: ~25KB per deck</li>
+</ul>
+<h3 id="performance-tips">Performance Tips</h3>
+<ul>
+<li>Optimize images before adding to content</li>
+<li>Use WebP format for photos</li>
+<li>Lazy load images with Pandoc filters</li>
+<li>Enable gzip compression on server</li>
+</ul>
+<h2 id="deployment-options">Deployment Options</h2>
+<h3 id="github-pages">GitHub Pages</h3>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># .github/workflows/deploy.yml</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> Deploy</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">on</span><span class="kw">:</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">push</span><span class="kw">:</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">branches</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">main</span><span class="kw">]</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">jobs</span><span class="kw">:</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">build-deploy</span><span class="kw">:</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">runs-on</span><span class="kw">:</span><span class="at"> ubuntu-latest</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">steps</span><span class="kw">:</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> actions/checkout@v3</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Build</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">        run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>          sudo apt-get install -y pandoc jq</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>          ./bin/cruella build html</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Deploy</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> peaceiris/actions-gh-pages@v3</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">github_token</span><span class="kw">:</span><span class="at"> ${{ secrets.GITHUB_TOKEN }}</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">publish_dir</span><span class="kw">:</span><span class="at"> ./public</span></span></code></pre></div>
+<h3 id="netlify">Netlify</h3>
+<p>Create <code>netlify.toml</code>:</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode toml"><code class="sourceCode toml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[build]</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">command</span> <span class="op">=</span> <span class="st">&quot;bin/cruella build html&quot;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">publish</span> <span class="op">=</span> <span class="st">&quot;public&quot;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">[[plugins]]</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">package</span> <span class="op">=</span> <span class="st">&quot;@netlify/plugin-lighthouse&quot;</span></span></code></pre></div>
+<h3 id="docker">Docker</h3>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode dockerfile"><code class="sourceCode dockerfile"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> pandoc/latex:latest</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">WORKDIR</span> /workspace</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> . .</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">apk</span> add <span class="at">--no-cache</span> bash entr jq</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="kw">CMD</span> [<span class="st">&quot;./bin/cruella&quot;</span>, <span class="st">&quot;build&quot;</span>, <span class="st">&quot;all&quot;</span>]</span></code></pre></div>
+<p>Build and run:</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> cruella .</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>/output:/workspace/public cruella</span></code></pre></div>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-issues">Common Issues</h3>
+<h4 id="pandoc-not-found">Pandoc Not Found</h4>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ubuntu/Debian</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install pandoc</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># macOS</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install pandoc</span></code></pre></div>
+<h4 id="latex-errors-in-pdf">LaTeX Errors in PDF</h4>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install TeX Live</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install texlive-xetex</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Or use minimal engine</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">--pdf-engine</span><span class="op">=</span>pdflatex input.md <span class="at">-o</span> output.pdf</span></code></pre></div>
+<h4 id="watch-mode-not-working">Watch Mode Not Working</h4>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install entr</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install entr</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Or macOS</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install entr</span></code></pre></div>
+<h4 id="search-not-working">Search Not Working</h4>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install jq</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install jq</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Rebuild to generate index</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="ex">./bin/cruella</span> build html</span></code></pre></div>
+<h3 id="debug-mode">Debug Mode</h3>
+<p>Add <code>set -x</code> to shell scripts for verbose output:</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/sh</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-ex</span>  <span class="co"># Enable debug trace</span></span></code></pre></div>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>Review the <a href="roadmap.md">Roadmap</a> for future features</li>
+<li>Check <a href="enhancements.md">Enhancements</a> for full feature
+list</li>
+<li>Join the community (GitHub Discussions)</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<p><strong>Questions?</strong> Open an issue on GitHub!</p>
+</section></div>
+  </div>
+  <div class="slide-footer">Advanced Features</div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js/plugin/search/search.js"></script>
+  <script>
+    Reveal.initialize({
+      hash:true,
+      slideNumber:'c/t',
+      transition:'slide',
+      backgroundTransition:'fade',
+      width:1280,
+      height:720,
+      plugins:[RevealNotes, RevealHighlight, RevealSearch]
+    });
+  </script>
+</body>
+</html>
