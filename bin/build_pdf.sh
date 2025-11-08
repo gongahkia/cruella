@@ -12,16 +12,18 @@ if ! command -v xelatex >/dev/null 2>&1 && ! command -v pdflatex >/dev/null 2>&1
   exit 0
 fi
 
-# Quick sanity check for working LaTeX installation
-test_tex=$(mktemp --suffix=.tex)
-echo '\documentclass{article}\begin{document}test\end{document}' > "$test_tex"
-if ! pdflatex -interaction=nonstopmode -output-directory=/tmp "$test_tex" >/dev/null 2>&1; then
-  rm -f "$test_tex"
-  echo "[build_pdf] LaTeX installation incomplete (missing fonts/packages), skipping PDF build"
-  echo "[build_pdf] Tip: sudo apt install texlive-latex-base texlive-fonts-recommended"
+# Check for required LaTeX packages by testing pandoc PDF generation
+test_md=$(mktemp --suffix=.md)
+test_pdf=$(mktemp --suffix=.pdf)
+echo "# Test" > "$test_md"
+if ! pandoc "$test_md" --pdf-engine=pdflatex -o "$test_pdf" >/dev/null 2>&1; then
+  rm -f "$test_md" "$test_pdf"
+  echo "[build_pdf] LaTeX installation incomplete (missing required packages for pandoc)"
+  echo "[build_pdf] Install: sudo apt install texlive-latex-base texlive-fonts-recommended texlive-latex-extra"
+  echo "[build_pdf] Skipping PDF build. HTML and slides are available."
   exit 0
 fi
-rm -f "$test_tex" /tmp/texput.*
+rm -f "$test_md" "$test_pdf"
 
 mkdir -p "$PDF_DIR"
 

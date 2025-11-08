@@ -47,6 +47,11 @@ ensure_assets() {
   if [ -f "$TEMPLATES_DIR/search.js" ]; then
     cp -f "$TEMPLATES_DIR/search.js" "$HTML_DIR/search.js"
   fi
+  # Copy asset directory for images and other resources
+  if [ -d "./asset" ]; then
+    cp -rf ./asset "$HTML_DIR/"
+    cp -rf ./asset "$SLIDES_DIR/"
+  fi
 }
 
 # Plugin hook runner (executables in plugins/)
