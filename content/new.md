@@ -21,7 +21,7 @@ Tip:
 
 An image:
 
-![Cruella Logo](../asset/logo/cruella.png "Cruella logo")
+![Cruella Logo](asset/logo/cruella.png "Cruella logo")
 
 Small table:
 

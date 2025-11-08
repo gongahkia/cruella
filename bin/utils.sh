@@ -87,10 +87,18 @@ render_pdf() {
   output="$2"
   title="$(front_matter_value title "$input")"
   [ -z "$title" ] && title="$(basename "$input" .md)"
+  
+  # Detect available PDF engine (prefer pdflatex for simplicity)
+  pdf_engine="pdflatex"
+  if ! command_exists pdflatex && command_exists xelatex; then
+    pdf_engine="xelatex"
+  fi
+  
   pandoc \
     --from markdown \
     --metadata title="$title" \
-    --pdf-engine=xelatex \
+    --pdf-engine="$pdf_engine" \
+    --resource-path=".:./content:./asset" \
     "$input" -o "$output"
 }
 
