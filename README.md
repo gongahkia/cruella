@@ -2,9 +2,7 @@
 
 # `Cruella`
 
-[POSIX](https://en.wikipedia.org/wiki/POSIX)-compliant Static Site, Slides and PDF generator and publisher written in [Bash]().
-
-`Cruella` works on any [Markdown](https://www.markdownguide.org/) folder.
+[POSIX](https://en.wikipedia.org/wiki/POSIX)-compliant Static Site, Slides and PDF generator and publisher written in [Bash](https://www.gnu.org/software/bash/) that works on any [Markdown](https://www.markdownguide.org/) folder.
 
 ## Stack
 
