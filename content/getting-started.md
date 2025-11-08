@@ -1,5 +1,7 @@
 ---
 title: Getting Started with Cruella
+description: Quick tour of Cruella features and how to build outputs
+tags: getting-started, quickstart, docs
 ---
 
 # Welcome to Cruella

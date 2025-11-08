@@ -1,5 +1,7 @@
 ---
 title: Advanced Features
+description: Deep dive into extended capabilities, plugins, search, slides
+tags: advanced, features, plugins, search
 ---
 
 # Advanced Features
