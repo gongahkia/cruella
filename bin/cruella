@@ -11,6 +11,7 @@ cruella - FOOLS-STACK CLI
 
 Usage:
   cruella build [html|pdf|slides|all]
+  cruella watch
   cruella serve [DIR] [PORT]
   cruella deploy
   cruella clean
@@ -21,6 +22,7 @@ Commands:
   build pdf       Build PDFs from Markdown
   build slides    Build Slides from Markdown
   build all       Build all outputs
+  watch           Rebuild on markdown changes
   serve [DIR]     Serve directory locally (default: ./public)
   deploy          Deploy site to remote (requires DEPLOY_DEST)
   clean           Remove generated files
@@ -49,6 +51,7 @@ clean() {
 
 case "$1" in
   build)   shift; build "$@" ;;
+  watch)   "$BIN_DIR/watch.sh" ;;
   serve)   shift; "$BIN_DIR/serve.sh" "$@" ;;
   deploy)  "$BIN_DIR/deploy.sh" ;;
   clean)   clean ;;

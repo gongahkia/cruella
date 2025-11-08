@@ -2,12 +2,15 @@
 
 set -e
 
+# Directories (can be overridden via env)
 MARKDOWN_DIR="${MARKDOWN_DIR:-./content}"
 HTML_DIR="${HTML_DIR:-./public}"
 PDF_DIR="${PDF_DIR:-./pdfs}"
 SLIDES_DIR="${SLIDES_DIR:-./slides}"
 TEMPLATES_DIR="${TEMPLATES_DIR:-./templates}"
+PLUGINS_DIR="${PLUGINS_DIR:-./plugins}"
 
+# Helper: command availability
 command_exists() {
   command -v "$1" >/dev/null 2>&1
 }
@@ -21,22 +24,83 @@ require() {
   done
 }
 
+# Extract a YAML front matter key (simple, first occurrence)
+front_matter_value() {
+  key="$1"; file="$2"
+  awk -v k="$key" '
+    BEGIN{inmeta=0}
+    /^---[[:space:]]*$/{ if(inmeta==0){inmeta=1;next}else{exit} }
+    inmeta==1 && $0 ~ "^"k":" {
+      sub("^"k":[ ]*", "", $0); print; exit
+    }' "$file"
+}
+
+# Copy static assets to output dirs
+ensure_assets() {
+  mkdir -p "$HTML_DIR" "$SLIDES_DIR"
+  # Core stylesheet
+  if [ -f "$TEMPLATES_DIR/style.css" ]; then
+    cp -f "$TEMPLATES_DIR/style.css" "$HTML_DIR/style.css"
+    cp -f "$TEMPLATES_DIR/style.css" "$SLIDES_DIR/style.css"
+  fi
+  # Optional search script
+  if [ -f "$TEMPLATES_DIR/search.js" ]; then
+    cp -f "$TEMPLATES_DIR/search.js" "$HTML_DIR/search.js"
+  fi
+}
+
+# Plugin hook runner (executables in plugins/)
+run_plugins() {
+  [ -d "$PLUGINS_DIR" ] || return 0
+  for plugin in "$PLUGINS_DIR"/*; do
+    [ -x "$plugin" ] || continue
+    echo "[plugins] Running $(basename "$plugin")"
+    HTML_DIR="$HTML_DIR" MARKDOWN_DIR="$MARKDOWN_DIR" SLIDES_DIR="$SLIDES_DIR" PDF_DIR="$PDF_DIR" "$plugin" || echo "[plugins] Warning: $(basename "$plugin") failed"
+  done
+}
+
 render_markdown() {
   input="$1"
   output="$2"
   template="$3"
-  pandoc --from markdown --to html5 --standalone --template="$template" --css="$TEMPLATES_DIR/style.css" "$input" -o "$output"
+  title="$(front_matter_value title "$input")"
+  [ -z "$title" ] && title="$(basename "$input" .md)"
+  pandoc \
+    --from markdown \
+    --to html5 \
+    --standalone \
+    --template="$template" \
+    --metadata title="$title" \
+    --css="style.css" \
+    --toc --toc-depth=3 \
+    "$input" -o "$output"
 }
 
 render_pdf() {
   input="$1"
   output="$2"
-  pandoc --from markdown --to pdf "$input" -o "$output"
+  title="$(front_matter_value title "$input")"
+  [ -z "$title" ] && title="$(basename "$input" .md)"
+  pandoc \
+    --from markdown \
+    --metadata title="$title" \
+    --pdf-engine=xelatex \
+    "$input" -o "$output"
 }
 
 render_slides() {
   input="$1"
   output="$2"
   template="$3"
-  pandoc --from markdown --to revealjs --standalone --template="$template" --css="$TEMPLATES_DIR/style.css" "$input" -o "$output"
+  title="$(front_matter_value title "$input")"
+  [ -z "$title" ] && title="$(basename "$input" .md)"
+  pandoc \
+    --from markdown \
+    --to revealjs \
+    --standalone \
+    --template="$template" \
+    --metadata title="$title" \
+    --css="style.css" \
+    --toc --toc-depth=2 \
+    "$input" -o "$output"
 }
