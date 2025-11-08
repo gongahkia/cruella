@@ -64,6 +64,10 @@ render_markdown() {
   output="$2"
   template="$3"
   title="$(front_matter_value title "$input")"
+  description="$(front_matter_value description "$input")"
+  tags_line="$(front_matter_value tags "$input")"
+  # normalize tags to comma-separated (no spaces around commas)
+  tags_csv=$(printf "%s" "$tags_line" | sed 's/,\s*/,/g')
   [ -z "$title" ] && title="$(basename "$input" .md)"
   pandoc \
     --from markdown \
@@ -71,6 +75,8 @@ render_markdown() {
     --standalone \
     --template="$template" \
     --metadata title="$title" \
+    ${description:+--metadata description="$description"} \
+    ${tags_csv:+--metadata keywords="$tags_csv"} \
     --css="style.css" \
     --toc --toc-depth=3 \
     "$input" -o "$output"
@@ -93,6 +99,9 @@ render_slides() {
   output="$2"
   template="$3"
   title="$(front_matter_value title "$input")"
+  description="$(front_matter_value description "$input")"
+  tags_line="$(front_matter_value tags "$input")"
+  tags_csv=$(printf "%s" "$tags_line" | sed 's/,\s*/,/g')
   [ -z "$title" ] && title="$(basename "$input" .md)"
   pandoc \
     --from markdown \
@@ -100,6 +109,8 @@ render_slides() {
     --standalone \
     --template="$template" \
     --metadata title="$title" \
+    ${description:+--metadata description="$description"} \
+    ${tags_csv:+--metadata keywords="$tags_csv"} \
     --css="style.css" \
     --toc --toc-depth=2 \
     "$input" -o "$output"
