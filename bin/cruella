@@ -7,7 +7,7 @@ PATH="$BIN_DIR:$PATH"
 
 show_help() {
   cat <<EOF
-cruella - FOOLS-STACK CLI
+cruella CLI
 
 Usage:
   cruella build [html|pdf|slides|all]
