@@ -1,4 +1,5 @@
-[![](https://img.shields.io/badge/cruella_1.0.0-passing-green)](https://github.com/gongahkia/cruella/releases/tag/1.0.0)
+[![](https://img.shields.io/badge/cruella_1.0.0-passing-dark_green)](https://github.com/gongahkia/cruella/releases/tag/1.0.0)
+[![](https://img.shields.io/badge/cruella_2.0.0-passing-green)](https://github.com/gongahkia/cruella/releases/tag/2.0.0)
 
 # `Cruella`
 
@@ -7,8 +8,21 @@
 ## Stack
 
 * *Script*: [Bash](https://www.gnu.org/software/bash/)
-* *Dependencies*: [Pandoc](https://pandoc.org/), [Reveal.js](https://revealjs.com/),  [Python](https://www.python.org/), [rsync](https://linux.die.net/man/1/rsync)
-* *CI/CD*: [Github Actions](https://github.com/features/actions)
+* *Dependencies*: [Pandoc](https://pandoc.org/), [Reveal.js](https://revealjs.com/),  [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), [rsync](https://linux.die.net/man/1/rsync)
+
+## Screenshots
+
+### Site
+
+![](./asset/reference/site.png)
+
+### Slides
+
+![](./asset/reference/slides.png)
+
+### PDF
+
+![](./asset/reference/pdf.png)
 
 ## Usage
 
@@ -32,7 +46,6 @@ $ git clone https://github.com/gongahkia/cruella && cd cruella && chmod +x bin/*
 | `bin/cruella clean` | Remove all generated files |
 | `bin/cruella help` | Show all available commands |
 | `bin/cruella serve` | Serve any dirctory (`./public` by default) at [localhost:8000](http://localhost:8000) |
-| `export DEPLOY_DEST="user@server:/var/www/html" && bin/cruella deploy` | Deploy the `public/` directory to a remote server |
 
 ## Architecture
 
